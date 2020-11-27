@@ -1,16 +1,16 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Resources:
-  PetStoreAPI:
+  TestAPI:
     Type: AWS::Serverless::Api
     Properties:
       StageName: anni
-      DefinitionUri: petstore-swagger.json
+      DefinitionUri: test-swagger.json
     
 Outputs:
 
-    PetStoreAPI:
-      Description: "Root API endpoint URL for Prod stage"
-      Value: !Sub "https://${PetStoreAPI}.execute-api.${AWS::Region}.amazonaws.com/anni"
+    TestAPI:
+      Description: "Root API endpoint URL for anni stage"
+      Value: !Sub "https://${TestAPI}.execute-api.${AWS::Region}.amazonaws.com/anni"
       Export:
-        Name: PetStoreAPIRoot
+        Name: TestAPIRoot
