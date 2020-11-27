@@ -314,7 +314,7 @@ Resources:
             RoleArn: !GetAtt
             - CloudFormationTrustRole
             - Arn
-            StackName: api-stack
+            StackName: api-stack-anni
           InputArtifacts:
           - Name: 'API-BuildArtifact'
           OutputArtifacts: []
@@ -329,7 +329,7 @@ Resources:
           Configuration:
             ActionMode: CHANGE_SET_EXECUTE
             ChangeSetName: pipeline-changeset
-            StackName: api-stack
+            StackName: api-stack-anni
           InputArtifacts: []
           OutputArtifacts: []
           RunOrder: 2
