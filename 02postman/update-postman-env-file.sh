@@ -6,16 +6,16 @@
 echo "Running update-postman-env-file.sh"
 
 api_gateway_url=`aws cloudformation describe-stacks \
-  --stack-name petstore-api-stack \
+  --stack-name api-stack \
   --query "Stacks[0].Outputs[*].{OutputValueValue:OutputValue}" --output text`
 
 echo "API Gateway URL:" ${api_gateway_url}
 
 jq -e --arg apigwurl "$api_gateway_url" '(.values[] | select(.key=="apigw-root") | .value) = $apigwurl' \
-  PetStoreAPIEnvironment.postman_environment.json > PetStoreAPIEnvironment.postman_environment.json.tmp \
-  && cp PetStoreAPIEnvironment.postman_environment.json.tmp PetStoreAPIEnvironment.postman_environment.json \
-  && rm PetStoreAPIEnvironment.postman_environment.json.tmp
+  APIEnvironment.postman_environment.json > APIEnvironment.postman_environment.json.tmp \
+  && cp APIEnvironment.postman_environment.json.tmp APIEnvironment.postman_environment.json \
+  && rm APIEnvironment.postman_environment.json.tmp
 
-echo "Updated PetStoreAPIEnvironment.postman_environment.json"
+echo "Updated APIEnvironment.postman_environment.json"
 
-cat PetStoreAPIEnvironment.postman_environment.json
+cat APIEnvironment.postman_environment.json
